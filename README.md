@@ -25,7 +25,7 @@
 *(Click play to see our interactive UI, dynamic token allocation visualization, and real-time inference)*
 
 <div align="center">
-  <video src="https://github.com/FeiElysia/Tempo/raw/main/examples/demo.mp4" width="100%" controls autoplay loop muted></video>
+  <video src="https://github.com/user-attachments/assets/d8778fd2-c658-4bf1-9a0c-48a8f5163685" width="100%" controls autoplay loop muted></video>
 </div>
 
 ---
@@ -168,7 +168,7 @@ Here are some unedited inference results generated directly by our **Tempo-6B** 
 <summary><b>🧠 Example 1: Complex Multi-Task Analysis & Grounding (Honkai: Star Rail)</b></summary>
 
 <br>
-<video controls autoplay loop muted src="https://github.com/FeiElysia/Tempo/raw/main/examples/hsr_helloworld.mp4" width="100%"></video>
+<video controls autoplay loop muted src="https://github.com/user-attachments/assets/5eebb0fb-04e2-4ee3-84ca-ad77523cfe92" width="100%"></video>
 
 > **🔷 Query:**
 > 
@@ -197,7 +197,7 @@ Here are some unedited inference results generated directly by our **Tempo-6B** 
 <summary><b>🔥 Example 2: Video Summarization (Honkai Impact 3rd)</b></summary>
 
 <br>
-<video controls autoplay loop muted src="https://github.com/FeiElysia/Tempo/raw/main/examples/honkai3_becauseofyou.mp4" width="100%"></video>
+<video controls autoplay loop muted src="https://github.com/user-attachments/assets/dbdd9985-9ed5-45d6-b42d-d35aa2dd4fc1" width="100%"></video>
 
 > **🔷 Query:**
 > Describe the video in detail.
