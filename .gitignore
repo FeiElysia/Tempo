@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.vscode/
+checkpoints/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.gradio
+*dcgm
+debug*
+gpu.sh
+demo.txt

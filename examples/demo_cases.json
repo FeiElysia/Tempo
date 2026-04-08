@@ -1,0 +1,40 @@
+[
+  {
+    "video_path": "./examples/hsr_helloworld.mp4",
+    "query": "Task: Please examine the provided media and answer the following three questions regarding the specific puppy in the scene:\nQ1: What is the primary fur color of the puppy positioned on the swing?\nQ2: Specify the exact time interval (in seconds, e.g., XX-XXs) during which the puppy is seen sitting on the swing.\nQ3: Provide a brief description of the puppy's appearance and its surroundings."
+  },
+  {
+    "video_path": "./examples/hsr_helloworld.mp4",
+    "query": "Task: Please analyze the provided video and answer the following 7 questions precisely.\nQ1: How many performers are visible on the stage?\nQ2: Describe the architectural elements in the background. What historical civilization do they remind you of?\nQ3: What is happening in the night sky above the performers, and what does this suggest about the event?\nQ4: List the hair colors of the performers in order from left to right.\nQ5: Identify the specific musical instrument being played by the performer located on the far left of the stage.\nQ6: What is the specific time interval (in seconds, e.g., XX-XXs) during which this fireworks performance scene occurs in the video?\nQ7: Look at the audience in the foreground. How does their silhouette-like depiction affect the viewer's perspective of the stage?"
+  },
+  {
+    "video_path": "./examples/honkai3_becauseofyou.mp4",
+    "query": "What text appears in the center of the video behind a sea of pink flowers?"
+  },
+  {
+    "video_path": "./examples/honkai3_becauseofyou.mp4",
+    "query": "Describe the video in detail."
+  },
+  {
+    "video_path": "./examples/videomme_fFjv93ACGo8.mp4",
+    "query": "What colors are the clothes worn by the two announcers in the studio?"
+  },
+  {
+    "video_path": "./examples/videomme_FjS2LzrHEO8.mp4",
+    "query": "What was the purpose of using a hammer to hit the car in the video?\nA. To show the hammer works well.\nB. To show the solidity of the car.\nC. To warn people not to hit cars with hammers.\nD. To illustrate that a hammer is harder than a bullet."
+  },
+  {
+    "video_path": "./examples/videomme_FsLaTZmP6Uw.mp4",
+    "query": "Which year was the game held?"
+  },
+  {
+    "video_path": "./examples/videomme_Sp2nxlrQ89w.mp4",
+    "query": "In line with the video evidence, why does the orange stickman want to destroy the Minecraft world?\nA. He wants to save his son.\nB. He is too sad.\nC. He loses his son.\nD. He does like the world."
+  },
+  {
+    "video_path": "./examples/lvbench_gXnhqF0TqqI.mp4",
+    "query": "Where are the woman and children when they first appear in the video?"
+  }
+  
+
+]
