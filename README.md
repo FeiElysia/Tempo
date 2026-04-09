@@ -73,7 +73,7 @@ To fully support the open-source community and facilitate future research, we pr
 | **Stage 0** | Modality Alignment | *Coming Soon* ⏳ |
 | **Stage 1** | Pre-training | *Coming Soon* ⏳ |
 | **Stage 2** | Broad Supervised Fine-Tuning | *Coming Soon* ⏳ |
-| **Stage 3** | **Long-Context SFT (Final Tempo-6B)** | [🤗 HF Link](#) |
+| **Stage 3** | **Long-Context SFT (Final Tempo-6B)** | [🤗 HF Link](https://huggingface.co/Vision-CAIR/Tempo-6B) |
 
 *(Note: If you only want to run inference or evaluate our model, simply download the **Stage 3** weights. The checkpoints for Stage 0, Stage 1, and Stage 2 will be released alongside the training code in the following weeks.)*
 
@@ -90,6 +90,8 @@ mkdir -p checkpoints
 huggingface-cli download --resume-download Vision-CAIR/Tempo-6B --local-dir ./checkpoints/Tempo-6B
 
 # 2. Download the base Qwen3-VL model (Required for architecture initialization)
+# 💡 Note: To avoid caching Qwen3-VL in the default system drive during inference, 
+# you can modify Tempo-6B's `config.json`: change "Qwen/Qwen3-VL-2B-Instruct" to "./checkpoints/Qwen3-VL-2B-Instruct" and run:
 huggingface-cli download --resume-download Qwen/Qwen3-VL-2B-Instruct --local-dir ./checkpoints/Qwen3-VL-2B-Instruct
 ```
 
@@ -236,9 +238,9 @@ Tempo achieves state-of-the-art performance on extreme-long video benchmarks whi
 | GPT-4o | - | - | 66.7 | 64.6 | 71.9 | 30.8 |
 | Gemini 1.5 Pro | - | - | 64.0 | - | 75.0 | 33.1 |
 | **General Open-Source** | | | | | | |
+| VideoLLaMA3* | 7B | &le; 91 | 59.8 | 73.0 | 66.2 | 45.3 |
 | Qwen2.5-VL | 7B | 1924 | 56.0 | 70.2 | 65.1 | 45.3 |
 | Qwen3-VL* | 8B | &le; 640 | - | 78.1 | 71.4 | 58.0 |
-| VideoLLaMA3* | 7B | &le; 91 | 59.8 | 73.0 | 66.2 | 45.3 |
 | **Specialized Long Video** | | | | | | |
 | LongVA | 7B | 144 | - | 56.3 | 52.6 | - |
 | Kangaroo | 8B | 256 | 54.8 | 61.0 | 56.0 | 39.4 |
@@ -264,6 +266,16 @@ We are currently cleaning up the codebase for our evaluation pipeline and traini
 
 ---
 
+## 🔮 Next Steps
+
+While Tempo provides a strong foundation for long video understanding, it opens up several exciting possibilities for the community. Potential avenues for future research include:
+
+- **Routing Post-Training:** Enhancing the SVLM's zero-shot routing precision via RL to elicit stronger relevance priors.
+- **Autoregressive Compression:** Exploring reasoning-driven, dynamic length token generation for query-aware segment compression.
+- **Multi-Turn Efficiency:** Implementing hierarchical, on-demand visual extraction to support extremely fast multi-turn dialogue.
+
+---
+
 ## 📝 Citation
 
 If you find our work useful for your research and applications, please consider citing our paper:
@@ -272,7 +284,7 @@ If you find our work useful for your research and applications, please consider 
 @article{fei2026tempo,
   title     = {Small Vision-Language Models are Smart Compressors for Long Video Understanding},
   author    = {Fei, Junjie and Chen, Jun and Liu, Zechun and Xiong, Yunyang and Zhou, Chong and Wen, Wei and Han, Junlin and Zhuge, Mingchen and Suri, Saksham and Qian, Qi and Liu, Shuming and Wu, Lemeng and Krishnamoorthi, Raghuraman and Chandra, Vikas and Elhoseiny, Mohamed and Zhu, Chenchen},
-  journal   = {arXiv preprint arXiv:XXXX.XXXXX},
+  journal   = {arXiv preprint},
   year      = {2026},
 }
 ```
@@ -281,7 +293,7 @@ If you find our work useful for your research and applications, please consider 
 
 ## 🤝 Acknowledgements
 
-This work was conducted during a research internship at Meta AI. Junjie Fei, Mingchen Zhuge, Shuming Liu, and Mohamed Elhoseiny were supported by funding from the **KAUST Center of Excellence for Generative AI**. 
+Junjie Fei, Mingchen Zhuge, Shuming Liu, and Mohamed Elhoseiny were supported by funding from the **KAUST Center of Excellence for Generative AI**. 
 
 We extend our sincere gratitude to the open-source community for their invaluable contributions that made this research possible:
 
