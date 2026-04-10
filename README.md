@@ -3,13 +3,13 @@
 # 🎥 Tempo: Small Vision-Language Models are Smart Compressors for Long Video Understanding
 
 [![Project Page](https://img.shields.io/badge/Project-Page-blue?style=flat-square)](https://feielysia.github.io/tempo-page/)
-[![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b?style=flat-square)](https://arxiv.org/abs/***)
+[![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b?style=flat-square)](https://arxiv.org/abs/2604.08120)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-yellow?style=flat-square)](https://huggingface.co/spaces/Vision-CAIR/Tempo)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green.svg?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
 
 **Tempo** is an efficient, query-aware framework that natively compresses hour-long videos for downstream Multimodal LLMs. Instead of blindly dropping frames, Tempo acts as an intelligent temporal compressor, dynamically distributing the *rhythm* of the video based on user intent.
 
-[**Project Page**](https://feielysia.github.io/tempo-page/) | [**Paper**](https://arxiv.org/abs/***) | [**Demo**](https://huggingface.co/spaces/Vision-CAIR/Tempo)
+[**Project Page**](https://feielysia.github.io/tempo-page/) | [**Paper**](https://arxiv.org/abs/2604.08120) | [**Demo**](https://huggingface.co/spaces/Vision-CAIR/Tempo)
 
 </div>
 
@@ -281,11 +281,11 @@ While Tempo provides a strong foundation for long video understanding, it opens 
 If you find our work useful for your research and applications, please consider citing our paper:
 
 ```bibtex
-@article{fei2026tempo,
-  title     = {Small Vision-Language Models are Smart Compressors for Long Video Understanding},
-  author    = {Fei, Junjie and Chen, Jun and Liu, Zechun and Xiong, Yunyang and Zhou, Chong and Wen, Wei and Han, Junlin and Zhuge, Mingchen and Suri, Saksham and Qian, Qi and Liu, Shuming and Wu, Lemeng and Krishnamoorthi, Raghuraman and Chandra, Vikas and Elhoseiny, Mohamed and Zhu, Chenchen},
-  journal   = {arXiv preprint},
-  year      = {2026},
+@article{fei2026small,
+  title={Small Vision-Language Models are Smart Compressors for Long Video Understanding},
+  author={Fei, Junjie and Chen, Jun and Liu, Zechun and Xiong, Yunyang and Zhou, Chong and Wen, Wei and Han, Junlin and Zhuge, Mingchen and Suri, Saksham and Qian, Qi and others},
+  journal={arXiv preprint arXiv:2604.08120},
+  year={2026}
 }
 ```
 
