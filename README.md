@@ -5,11 +5,12 @@
 [![Project Page](https://img.shields.io/badge/Project-Page-blue?style=flat-square)](https://feielysia.github.io/tempo-page/)
 [![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b?style=flat-square)](https://arxiv.org/abs/2604.08120)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-yellow?style=flat-square)](https://huggingface.co/spaces/Vision-CAIR/Tempo)
+[![Daily Papers](https://img.shields.io/badge/%F0%9F%A4%97%20Daily%20Papers-orange?style=flat-square)](https://huggingface.co/papers/2604.08120)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green.svg?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
 
 **Tempo** is an efficient, query-aware framework that natively compresses hour-long videos for downstream Multimodal LLMs. Instead of blindly dropping frames, Tempo acts as an intelligent temporal compressor, dynamically distributing the *rhythm* of the video based on user intent.
 
-[**Project Page**](https://feielysia.github.io/tempo-page/) | [**Paper**](https://arxiv.org/abs/2604.08120) | [**Demo**](https://huggingface.co/spaces/Vision-CAIR/Tempo)
+[**Project Page**](https://feielysia.github.io/tempo-page/) | [**Paper**](https://huggingface.co/papers/2604.08120) | [**Demo**](https://huggingface.co/spaces/Vision-CAIR/Tempo)
 
 </div>
 
@@ -31,9 +32,9 @@
 ---
 
 ## 🔥 News
-* **[2026.04]** 🚀 We have released the **Tempo-6B** inference code, interactive Gradio UI, and the final checkpoints (Stage 3)!
-* **[TODO]** 📄 Our paper will be available shortly.
-* **[TODO]** 📊 **Evaluation Pipeline:** We will release the full evaluation code and scripts for LVBench, Video-MME, MLVU, and LongVideoBench.
+* **[2026.04]** 📄 Our paper is officially out! You can read it on [arXiv](https://arxiv.org/abs/2604.08120) and check out our page on [Hugging Face Papers](https://huggingface.co/papers/2604.08120).
+* **[2026.04]** 🚀 We have released the **Tempo-6B** inference code, [interactive Gradio UI](https://huggingface.co/spaces/Vision-CAIR/Tempo), and the [final checkpoints (Stage 3)](https://huggingface.co/Vision-CAIR/Tempo-6B)!
+**[TODO]** 📊 **Evaluation Pipeline:** We will release the full evaluation code and scripts for LVBench, Video-MME, MLVU, and LongVideoBench.
 * **[TODO]** 📦 **Intermediate Checkpoints:** We plan to release the checkpoints for training Stages 0, 1, and 2 to support downstream research.
 * **[TODO]** 🛠️ **Training Code:** The complete training scripts for all 4 stages will be open-sourced in the following weeks. Stay tuned!
 
@@ -60,7 +61,23 @@ conda activate tempo
 pip install -r requirements.txt
 ```
 
-> **💡 Note on Flash-Attention:** The `requirements.txt` will automatically install `flash-attn==2.7.4.post1`. If you encounter any build errors regarding `flash-attn`, simply install it manually *after* PyTorch: `pip install flash-attn==2.7.4.post1 --no-build-isolation`.
+#### ⚡ Installing Flash-Attention (Crucial)
+
+Since `flash-attn` installation can be highly environment-dependent, please install it manually using one of the methods below:
+
+```bash
+
+# Method 1
+pip install flash-attn==2.7.4.post1
+
+# Method 2: Without Build Isolation
+pip install flash-attn==2.7.4.post1 --no-build-isolation
+
+# Method 3: If you are unable to build from source, you can directly download and install the pre-built wheel:
+wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.6cxx11abiFALSE-cp312-cp312-linux_x86_64.whl
+pip install flash_attn-2.7.4.post1+cu12torch2.6cxx11abiFALSE-cp312-cp312-linux_x86_64.whl
+rm flash_attn*.whl
+```
 
 ### 2. Model Zoo
 
@@ -273,6 +290,10 @@ While Tempo provides a strong foundation for long video understanding, it opens 
 - **Routing Post-Training:** Enhancing the SVLM's zero-shot routing precision via RL to elicit stronger relevance priors.
 - **Autoregressive Compression:** Exploring reasoning-driven, dynamic length token generation for query-aware segment compression.
 - **Multi-Turn Efficiency:** Implementing hierarchical, on-demand visual extraction to support extremely fast multi-turn dialogue.
+
+📖 For more detailed insights, please refer to the **Discussion and Future Works** section in our [Paper](https://arxiv.org/pdf/2604.08120).
+
+🤝 **Call for Collaboration:** We warmly welcome community contributions! If you are interested in exploring these directions, building upon Tempo, or collaborating on future research, please feel free to reach out to us directly at [junjiefei@outlook.com](mailto:junjiefei@outlook.com). Let's push the boundaries of long video understanding together!
 
 ---
 
