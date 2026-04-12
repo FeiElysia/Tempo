@@ -5,7 +5,6 @@
 [![Project Page](https://img.shields.io/badge/Project-Page-blue?style=flat-square)](https://feielysia.github.io/tempo-page/)
 [![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b?style=flat-square)](https://arxiv.org/abs/2604.08120)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-yellow?style=flat-square)](https://huggingface.co/spaces/Vision-CAIR/Tempo)
-[![Daily Papers](https://img.shields.io/badge/%F0%9F%A4%97%20Daily%20Papers-orange?style=flat-square)](https://huggingface.co/papers/2604.08120)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green.svg?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
 
 **Tempo** is an efficient, query-aware framework that natively compresses hour-long videos for downstream Multimodal LLMs. Instead of blindly dropping frames, Tempo acts as an intelligent temporal compressor, dynamically distributing the *rhythm* of the video based on user intent.
@@ -34,7 +33,7 @@
 ## 🔥 News
 * **[2026.04]** 📄 Our paper is officially out! You can read it on [arXiv](https://arxiv.org/abs/2604.08120) and check out our page on [Hugging Face Papers](https://huggingface.co/papers/2604.08120).
 * **[2026.04]** 🚀 We have released the **Tempo-6B** inference code, [interactive Gradio UI](https://huggingface.co/spaces/Vision-CAIR/Tempo), and the [final checkpoints (Stage 3)](https://huggingface.co/Vision-CAIR/Tempo-6B)!
-**[TODO]** 📊 **Evaluation Pipeline:** We will release the full evaluation code and scripts for LVBench, Video-MME, MLVU, and LongVideoBench.
+* **[TODO]** 📊 **Evaluation Pipeline:** We will release the full evaluation code and scripts for LVBench, Video-MME, MLVU, and LongVideoBench.
 * **[TODO]** 📦 **Intermediate Checkpoints:** We plan to release the checkpoints for training Stages 0, 1, and 2 to support downstream research.
 * **[TODO]** 🛠️ **Training Code:** The complete training scripts for all 4 stages will be open-sourced in the following weeks. Stay tuned!
 
@@ -61,7 +60,7 @@ conda activate tempo
 pip install -r requirements.txt
 ```
 
-#### ⚡ Installing Flash-Attention (Crucial)
+#### ⚡ Installing Flash-Attention
 
 Since `flash-attn` installation can be highly environment-dependent, please install it manually using one of the methods below:
 
@@ -78,6 +77,12 @@ wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1
 pip install flash_attn-2.7.4.post1+cu12torch2.6cxx11abiFALSE-cp312-cp312-linux_x86_64.whl
 rm flash_attn*.whl
 ```
+
+> 💡 If you are unable to install `flash-attn`, you can still run Tempo by disabling it:
+> 1. Set `use_flash_attn=False` when calling `load_pretrained_model`.
+> 2. Comment out the line `self.config._attn_implementation = "flash_attention_2"` in `qwen3vl_encoder.py`.
+> 
+> Theoretically, the numerical differences should be minimal. We have visually verified that the model produces excellent qualitative results without Flash-Attention. However, please note that we have not rigorously evaluated its impact on the benchmarks we reported in the paper.
 
 ### 2. Model Zoo
 
