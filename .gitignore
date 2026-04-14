@@ -11,3 +11,5 @@ checkpoints/
 debug*
 gpu.sh
 demo.txt
+results/*
+scripts/testscripts

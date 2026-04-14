@@ -33,8 +33,8 @@
 ## 🔥 News
 * **[2026.04]** 📄 Our paper is officially out! You can read it on [arXiv](https://arxiv.org/abs/2604.08120) and check out our page on [Hugging Face Papers](https://huggingface.co/papers/2604.08120).
 * **[2026.04]** 🚀 We have released the **Tempo-6B** inference code, [interactive Gradio UI](https://huggingface.co/spaces/Vision-CAIR/Tempo), and the [final checkpoints (Stage 3)](https://huggingface.co/Vision-CAIR/Tempo-6B)!
-* **[TODO]** 📊 **Evaluation Pipeline:** We will release the full evaluation code and scripts for LVBench, Video-MME, MLVU, and LongVideoBench.
-* **[TODO]** 📦 **Intermediate Checkpoints:** We plan to release the checkpoints for training Stages 0, 1, and 2 to support downstream research.
+* **[√]** 📊 **Evaluation Pipeline:** We will release the full evaluation code and scripts for LVBench, Video-MME, MLVU, and LongVideoBench.
+* **[√]** 📦 **Intermediate Checkpoints:** We plan to release the checkpoints for training Stages 0, 1, and 2 to support downstream research.
 * **[TODO]** 🛠️ **Training Code:** The complete training scripts for all 4 stages will be open-sourced in the following weeks. Stay tuned!
 
 > ⭐ **Tip:** Please **Watch** or **Star** this repository to keep an eye on our latest updates and code releases!
@@ -92,9 +92,9 @@ To fully support the open-source community and facilitate future research, we pr
 
 | Training Stage | Description | Weights |
 | :--- | :--- | :---: |
-| **Stage 0** | Modality Alignment | *Coming Soon* ⏳ |
-| **Stage 1** | Pre-training | *Coming Soon* ⏳ |
-| **Stage 2** | Broad Supervised Fine-Tuning | *Coming Soon* ⏳ |
+| **Stage 0** | Modality Alignment | [🤗 HF Link](https://huggingface.co/Vision-CAIR/Tempo-6B-Stage0) |
+| **Stage 1** | Pre-training | [🤗 HF Link](https://huggingface.co/Vision-CAIR/Tempo-6B-Stage1) |
+| **Stage 2** | Broad Supervised Fine-Tuning | [🤗 HF Link](https://huggingface.co/Vision-CAIR/Tempo-6B-Stage2) |
 | **Stage 3** | **Long-Context SFT (Final Tempo-6B)** | [🤗 HF Link](https://huggingface.co/Vision-CAIR/Tempo-6B) |
 
 *(Note: If you only want to run inference or evaluate our model, simply download the **Stage 3** weights. The checkpoints for Stage 0, Stage 1, and Stage 2 will be released alongside the training code in the following weeks.)*
@@ -277,11 +277,24 @@ Tempo achieves state-of-the-art performance on extreme-long video benchmarks whi
 
 ---
 
-## 🧪 Evaluation & Training (Coming Soon)
+## 🧪 Evaluation
+
+```bash
+# 4k Budgets
+sh ./scripts/eval/4k_budgets/eval_all.sh
+
+# 8k Budgets
+sh ./scripts/eval/8k_budgets/eval_all.sh
+```
+
+> The detailed instructions will be updated in the coming days.
+
+---
+
+## 🧪 Training (Coming Soon)
 
 We are currently cleaning up the codebase for our evaluation pipeline and training scripts. 
 
-- [ ] **Evaluation Pipeline:** Scripts to reproduce results on LVBench, Video-MME, MLVU, and LongVideoBench.
 - [ ] **Training Scripts:** Full pipeline for the progressive training curriculum.
 
 *Please watch/star the repository to get notified when these are released!*
