@@ -281,12 +281,14 @@ Tempo achieves state-of-the-art performance on long video benchmarks while using
 
 ## 🧪 Evaluation
 
-Our evaluation scripts are organized under `./scripts/eval/` and support both **4K** and **8K** visual token budgets, perfectly aligning with the settings reported in our main table.
+Our evaluation scripts are organized under `./scripts/eval/`.
 
-> **💡 Hardware Note:** By default, the scripts are configured for a 4-GPU setup. Before running, please ensure you adjust `NUM_GPUS` and `CUDA_VISIBLE_DEVICES` inside the scripts to match your local machine environment.
+> **💡 Note:** By default, the scripts are configured for a 4-GPU setup. Before running, please ensure you adjust `NUM_GPUS` and `CUDA_VISIBLE_DEVICES` inside the scripts to match your local machine environment.
 
 ### 1. Evaluate All Benchmarks
-To reproduce the main results across all datasets in one go, run the comprehensive script for your desired budget:
+
+To reproduce the main results across all benchmarks, run the script for your desired visual token budget:
+
 ```bash
 # For 4K budget
 sh ./scripts/eval/4k_budgets/eval_all.sh
@@ -296,24 +298,27 @@ sh ./scripts/eval/8k_budgets/eval_all.sh
 ```
 
 ### 2. Evaluate a Single Benchmark
-To run evaluation on a specific dataset (e.g., Video-MME under the 4K budget), execute the corresponding script:
+
+To run evaluation on a specific benchmark (*e.g.,* LVBench under the 4K budget), execute the corresponding script:
+
 ```bash
-sh ./scripts/eval/4k_budgets/eval_videomme.sh
+sh ./scripts/eval/4k_budgets/eval_lvbench.sh
 ```
 
 ### 3. Debugging
+
 For a quick sanity check to ensure your environment and model loading are properly configured:
 ```bash
 sh ./scripts/eval/eval_debug.sh
 ```
 
 ### 📊 Special Note on Video-MME Scores
-By default, the `lmms-eval` framework only reports the **overall** accuracy for Video-MME. To obtain the detailed breakdown across different video lengths (Short, Medium, Long), use our provided script:
+The `lmms-eval` framework only reports the Overall accuracy for Video-MME. To obtain the detailed breakdown across different video lengths (Short, Medium, Long), use our provided script:
 
 ```bash
 python ./scripts/eval/split_videomme.py
 ```
-> **⚠️ Important:** Before running, please open `split_videomme.py` and modify the `jsonl_file` path to point to your recently generated `*_samples_videomme.jsonl` log file. The overall score calculated by this script perfectly matches the `lmms-eval` output.
+> ⚠️ Before running, please open `split_videomme.py` and modify the `jsonl_file` path to point to your recently generated `*_samples_videomme.jsonl` log file. The overall score calculated by this script matches the `lmms-eval` output.
 
 ---
 
@@ -363,9 +368,9 @@ Junjie Fei, Mingchen Zhuge, Shuming Liu, and Mohamed Elhoseiny were supported by
 We extend our sincere gratitude to the open-source community for their invaluable contributions that made this research possible:
 
 * **Evaluation Benchmarks:** [LVBench](https://lvbench.github.io/), [Video-MME](https://video-mme.github.io/), [MLVU](https://github.com/JUNJIE99/MLVU), and [LongVideoBench](https://longvideobench.github.io/).
-* **Codebase Foundations:** Our codebase is built upon the excellent architectures of [LongVU](https://github.com/Vision-CAIR/LongVU), [VideoChat-Flash](https://github.com/OpenGVLab/VideoChat-Flash), and [LLaVA](https://github.com/haotian-liu/LLaVA).
-* **Pre-trained Weights:** Our models are initialized using the powerful foundational models from [Qwen3-VL](https://github.com/QwenLM/Qwen3-VL) and **Qwen3-LM**.
-* **Project Page:** Our website template is adapted from the beautiful [Nerfies](https://github.com/nerfies/nerfies.github.io) project.
+* **Codebase Foundations:** Our codebase is built upon the excellent architectures of [LongVU](https://github.com/Vision-CAIR/LongVU), [VideoChat-Flash](https://github.com/OpenGVLab/VideoChat-Flash), [LLaVA](https://github.com/haotian-liu/LLaVA), [LMMs-Eval](https://github.com/evolvinglmms-lab/lmms-eval).
+* **Pre-trained Weights:** Our models are initialized using the powerful foundational models from [Qwen3-VL](https://github.com/QwenLM/Qwen3-VL) and [Qwen3-LM](https://github.com/QwenLM/Qwen3).
+* **Project Page:** Our website template is adapted from the [Nerfies](https://github.com/nerfies/nerfies.github.io) project.
 
 ---
 
