@@ -11,3 +11,12 @@ gradio
 matplotlib
 scipy
 decord
+
+# eval
+debugpy
+loguru
+sacrebleu
+evaluate
+tenacity
+opencv-python
+pytablewriter

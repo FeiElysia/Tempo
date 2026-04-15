@@ -14,9 +14,10 @@
 </div>
 
 ### ✨ Highlights
+
 * **🧠 Intent-Driven Compression (ATA):** Uses a Small VLM as an *O(1)* dynamic router to allocate dense token bandwidth to query-critical moments while rapidly fast-forwarding redundant backgrounds.
 * **⚡ Extreme Efficiency:** Achieves aggressive dynamic compression (**0.5–16 tokens/frame**), bypassing the *lost-in-the-middle* phenomenon without breaking causality.
-* **🏆 State-of-the-Art Performance:** Our compact **Tempo-6B** model scores 52.3 on the extreme-long LVBench (4101s) under a strict 8K visual token budget, outperforming proprietary baselines like GPT-4o and Gemini 1.5 Pro.
+* **🏆 State-of-the-Art Performance:** Our compact **Tempo-6B** model scores 52.3 on the extreme-long LVBench under a strict 8K visual token budget (53.7 with 12K budget), outperforming proprietary baselines like GPT-4o and Gemini 1.5 Pro.
 
 ---
 
@@ -31,10 +32,11 @@
 ---
 
 ## 🔥 News
+
+* **[2026.04]** 📦 We have released the **Intermediate Checkpoints** for Stages 0, 1, and 2! You can find them in our [Hugging Face Collection](https://huggingface.co/collections/Vision-CAIR/tempo).
+* **[2026.04]** 📊 The full **Evaluation Pipeline** is now open-sourced! Our evaluation scripts, integrated with the standard `lmms-eval` framework for LVBench, Video-MME, MLVU, and LongVideoBench, are ready to use. Please refer to the [Evaluation Section](#evaluation) for detailed instructions.
 * **[2026.04]** 📄 Our paper is officially out! You can read it on [arXiv](https://arxiv.org/abs/2604.08120) and check out our page on [Hugging Face Papers](https://huggingface.co/papers/2604.08120).
 * **[2026.04]** 🚀 We have released the **Tempo-6B** inference code, [interactive Gradio UI](https://huggingface.co/spaces/Vision-CAIR/Tempo), and the [final checkpoints (Stage 3)](https://huggingface.co/Vision-CAIR/Tempo-6B)!
-* **[√]** 📊 **Evaluation Pipeline:** We will release the full evaluation code and scripts for LVBench, Video-MME, MLVU, and LongVideoBench.
-* **[√]** 📦 **Intermediate Checkpoints:** We plan to release the checkpoints for training Stages 0, 1, and 2 to support downstream research.
 * **[TODO]** 🛠️ **Training Code:** The complete training scripts for all 4 stages will be open-sourced in the following weeks. Stay tuned!
 
 > ⭐ **Tip:** Please **Watch** or **Star** this repository to keep an eye on our latest updates and code releases!
@@ -86,7 +88,7 @@ rm flash_attn*.whl
 
 ### 2. Model Zoo
 
-To fully support the open-source community and facilitate future research, we provide the weights for our final model and will progressively release the intermediate checkpoints from **all 4 stages** of our training pipeline.
+To fully support the open-source community and facilitate future research, we have released the weights for our final model alongside the intermediate checkpoints from all 4 stages of our training pipeline.
 
 > **💡 Note on Token Budgets:** Tempo's Adaptive Token Allocation (ATA) is dynamically controlled at inference time. The 4K and 8K budget configurations reported in our paper use the **exact same final weights (Stage 3)**. You simply adjust the budget hyperparameter during inference.
 
@@ -97,7 +99,7 @@ To fully support the open-source community and facilitate future research, we pr
 | **Stage 2** | Broad Supervised Fine-Tuning | [🤗 HF Link](https://huggingface.co/Vision-CAIR/Tempo-6B-Stage2) |
 | **Stage 3** | **Long-Context SFT (Final Tempo-6B)** | [🤗 HF Link](https://huggingface.co/Vision-CAIR/Tempo-6B) |
 
-*(Note: If you only want to run inference or evaluate our model, simply download the **Stage 3** weights. The checkpoints for Stage 0, Stage 1, and Stage 2 will be released alongside the training code in the following weeks.)*
+*(Note: If you only want to run inference or evaluate our model, simply download the **Stage 3** weights. The intermediate checkpoints for Stages 0, 1, and 2 are provided for researchers who wish to reproduce our training pipeline, conduct ablation studies, or perform custom fine-tuning.)*
 
 ### 3. Prepare Checkpoints
 
@@ -121,7 +123,7 @@ huggingface-cli download --resume-download Qwen/Qwen3-VL-2B-Instruct --local-dir
 
 ## 💻 Inference & Demos
 
-We provide multiple ways to interact with Tempo, from web UI to highly batch scripts. 
+We provide multiple ways to interact with Tempo, from web UI to batch scripts. 
 
 ### 1. Web UI (Gradio)
 
@@ -252,7 +254,7 @@ Instead of blindly sampling frames, our pipeline operates in three highly effici
 
 ## 📊 Quantitative Results
 
-Tempo achieves state-of-the-art performance on extreme-long video benchmarks while using a fraction of the token budget compared to traditional models.
+Tempo achieves state-of-the-art performance on long video benchmarks while using a fraction of the token budget compared to traditional models.
 
 | Model | Size | Tokens / Frame | LongVideoBench | MLVU | Video-MME | LVBench |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -273,31 +275,55 @@ Tempo achieves state-of-the-art performance on extreme-long video benchmarks whi
 | **Tempo* (8K Budget)** | **6B** | **0.5–16** | **65.1** | **75.2** | **67.7** | **52.3** |
 | *&#8627; actual avg. toks/frame*| | | 3.1 | 3.3 | 4.3 | 3.5 |
 
-> 💡 **Note:** While configured with a theoretical dynamic range of 0.5–16 tokens, Tempo's **Adaptive Token Allocation (ATA)** inherently operates substantially below the maximum limits in practice (see the *actual avg.* rows). For the complete leaderboard and exhaustive metrics, please visit our [Project Page](https://feielysia.github.io/tempo-page/).
+> 💡 **Note:** While configured with a theoretical dynamic range of 0.5–16 tokens, Tempo's **Adaptive Token Allocation (ATA)** operates substantially below the maximum limits in practice (see the *actual avg.* rows). For the complete leaderboard and metrics, please visit our [Project Page](https://feielysia.github.io/tempo-page/).
 
 ---
 
 ## 🧪 Evaluation
 
+Our evaluation scripts are organized under `./scripts/eval/` and support both **4K** and **8K** visual token budgets, perfectly aligning with the settings reported in our main table.
+
+> **💡 Hardware Note:** By default, the scripts are configured for a 4-GPU setup. Before running, please ensure you adjust `NUM_GPUS` and `CUDA_VISIBLE_DEVICES` inside the scripts to match your local machine environment.
+
+### 1. Evaluate All Benchmarks
+To reproduce the main results across all datasets in one go, run the comprehensive script for your desired budget:
 ```bash
-# 4k Budgets
+# For 4K budget
 sh ./scripts/eval/4k_budgets/eval_all.sh
 
-# 8k Budgets
+# For 8K budget
 sh ./scripts/eval/8k_budgets/eval_all.sh
 ```
 
-> The detailed instructions will be updated in the coming days.
+### 2. Evaluate a Single Benchmark
+To run evaluation on a specific dataset (e.g., Video-MME under the 4K budget), execute the corresponding script:
+```bash
+sh ./scripts/eval/4k_budgets/eval_videomme.sh
+```
+
+### 3. Debugging
+For a quick sanity check to ensure your environment and model loading are properly configured:
+```bash
+sh ./scripts/eval/eval_debug.sh
+```
+
+### 📊 Special Note on Video-MME Scores
+By default, the `lmms-eval` framework only reports the **overall** accuracy for Video-MME. To obtain the detailed breakdown across different video lengths (Short, Medium, Long), use our provided script:
+
+```bash
+python ./scripts/eval/split_videomme.py
+```
+> **⚠️ Important:** Before running, please open `split_videomme.py` and modify the `jsonl_file` path to point to your recently generated `*_samples_videomme.jsonl` log file. The overall score calculated by this script perfectly matches the `lmms-eval` output.
 
 ---
 
-## 🧪 Training (Coming Soon)
+## 🛠️ Training (Coming Soon)
 
-We are currently cleaning up the codebase for our evaluation pipeline and training scripts. 
+We are actively cleaning up and organizing the training codebase for public release.
 
-- [ ] **Training Scripts:** Full pipeline for the progressive training curriculum.
+- [ ] Training Scripts: The complete source code and configuration files for all 4 stages of our progressive training curriculum.
 
-*Please watch/star the repository to get notified when these are released!*
+*Stay tuned! Please watch/star the repository to get notified as soon as the training code drops.*
 
 ---
 

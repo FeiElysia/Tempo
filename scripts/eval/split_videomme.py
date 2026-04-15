@@ -32,7 +32,7 @@ def calculate_accuracy_by_duration(jsonl_file):
 
     avg_acc = sum(accuracies) / len(accuracies)
     print("-" * 50)
-    print(f"{'Average':8s}: {avg_acc:6.1f}%")
+    print(f"{'overall':8s}: {avg_acc:6.1f}%")
 
 
 if __name__ == "__main__":
