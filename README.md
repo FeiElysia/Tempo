@@ -134,6 +134,10 @@ python app.py
 ```
 *Navigate to the generated local or public URL in your browser. Our UI features dynamic token compression visualization and one-click example testing.*
 
+> **⚠️ Note:** We use Git LFS to manage the demo videos in this repository. If you encounter a "Video not playable" error, it means the actual video files were not downloaded during `git clone` (this will not happen if your system has already installed Git LFS).
+> * **Option 1 (Recommended):** Install Git LFS (`git lfs install`) and run `git lfs pull` inside the repository to fetch the real video files.
+> * **Option 2:** Manually download the specific `.mp4` files directly from our repository web interface.
+
 ### 2. Single Video Inference
 
 **Run the default example:**
