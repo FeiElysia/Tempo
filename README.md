@@ -134,10 +134,6 @@ python app.py
 ```
 *Navigate to the generated local or public URL in your browser. Our UI features dynamic token compression visualization and one-click example testing.*
 
-> **⚠️ Note:** We use Git LFS to manage the demo videos in this repository. If you encounter a "Video not playable" error, it means the actual video files were not downloaded during `git clone` (this will not happen if your system has already installed Git LFS).
-> * **Option 1 (Recommended):** Install Git LFS (`git lfs install`) and run `git lfs pull` inside the repository to fetch the real video files.
-> * **Option 2:** Manually download the specific `.mp4` files directly from our repository web interface.
-
 ### 2. Single Video Inference
 
 **Run the default example:**
@@ -164,6 +160,11 @@ To sequentially reproduce all the qualitative examples shown on our Project Page
 ```bash
 sh ./scripts/infer/infer_all_demos.sh
 ```
+
+> **⚠️ Note:**
+> For long demo videos (e.g., `lvbench_gXnhqF0TqqI.mp4` and `videomme_Sp2nxlrQ89w.mp4`), you have two options to avoid "file not found" errors:
+> * **Option 1 (Download):** Download them manually from our **[Examples Release Page](https://github.com/FeiElysia/Tempo/releases/tag/examples)** and place them in the `examples/` directory.
+> * **Option 2 (Skip):** Simply open `examples/demo_cases.json` and delete their corresponding entries.
 
 **Run a custom batch:**
 For testing across multiple custom videos, we highly recommend our JSON-based pipeline. 
