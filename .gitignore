@@ -13,3 +13,4 @@ gpu.sh
 demo.txt
 results/*
 scripts/testscripts
+slurm*

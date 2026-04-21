@@ -19,7 +19,7 @@ disable_dynamic_compress="False"
 model_name="Tempo-6B-Debug"
 model_path="./checkpoints/Tempo-6B"
 
-output_path="./eval_logs/${model_name}/"
+output_path="./results/debug/${model_name}/"
 mkdir -p "$output_path"
 
 exp="${model_name}_frame${min_frames_num}_${max_frames_num}_fps${video_fps}_win${frame_windows}_budget${visual_token_budget}"
