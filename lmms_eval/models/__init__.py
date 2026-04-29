@@ -109,7 +109,8 @@ AVAILABLE_SIMPLE_MODELS = {
     "whisper_tt": "WhisperTT",
     "xcomposer2_4KHD": "XComposer2_4KHD",
     "xcomposer2d5": "XComposer2D5",
-    "tempo": "Tempo"
+    "tempo": "Tempo",
+    "tempo_latency": "TempoLatency"
 }
 
 AVAILABLE_CHAT_TEMPLATE_MODELS = {

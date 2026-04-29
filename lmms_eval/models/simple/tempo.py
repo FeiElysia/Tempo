@@ -288,7 +288,7 @@ class Tempo(lmms):
 
         vlm_inputs = process_qwen_content(
             video,
-            "video",
+            "video" if real_fps is not None else "image",
             question,
             self.image_processor[0],
             real_fps,
@@ -298,14 +298,14 @@ class Tempo(lmms):
         )
         vlm_inputs = {key: v.cuda() for key, v in vlm_inputs.items()}
         
-        seg_timestamps = compute_segment_timestamp(
+        seg_timestamps = None if real_fps is None else compute_segment_timestamp(
             len(vlm_inputs["video_grid_thw"]),
             self.tokenizer,
             real_fps,
             self.frame_stride,
             self.frame_windows,
         )
-                    
+
         return processed_video, image_sizes, vlm_inputs, seg_timestamps
 
     def _build_prompt(self, question: str) -> tuple:
@@ -390,8 +390,8 @@ class Tempo(lmms):
                         real_fps, image = self.process_video(video_input)
 
                     elif isinstance(video_input, Image.Image):
-                        image = np.array(video_input.convert("RGB"))[np.newaxis, :]
-                        real_fps = self.video_fps
+                        image = video_input.convert("RGB")
+                        real_fps = None
 
                     elif isinstance(video_input, np.ndarray):
                         if video_input.ndim == 3:
